@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Page Layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
+        body{
+            background-color: lightgrey;
+            color:black;
+        }
+        #header1{
+            font-size: 40px;
+        }
     </style>
 </head>
-
 <body>
-    <header>
-    </header>
-    <main>
-    </main>
-</body>
+    <div id="tekst1">Det er tekst som skal endres.</div>
+    <button onclick="oppdaterTekst()" id="button1">endre header</button>
 
+    <script>
+        function oppdaterTekst(){
+            document.getElementById("tekst1").innerHTML = "Ny header her nå som er trykket på!";
+        }
+    </script>
+</body>
 </html>
