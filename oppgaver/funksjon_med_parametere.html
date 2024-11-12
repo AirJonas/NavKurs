@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="mainDiv">Dette er starter tekst som er ikke endret</div>
+    <button onclick="changeColorAndTekst('Dette er tekst nummer 1', 'red', '50px')">Endre tekst 1</button>
+    <button onclick="changeColorAndTekst('Dette er tekst nummer 2', 'blue', '30px')">Endre tekst 1</button>
+    <script>
+        function changeColorAndTekst(tekst, color, tekstSize){
+            document.getElementById("mainDiv").innerHTML = tekst;
+            document.getElementById("mainDiv").style.color = color;
+            document.getElementById("mainDiv").style.fontSize = tekstSize;
+        }
+    </script>
+</body>
+</html>
