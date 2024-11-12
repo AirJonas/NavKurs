@@ -13,7 +13,31 @@
         <p class="paragraphStyle">Dette er en paragraf</p>
         <span style="background-color: violet;">Dette er en paragraf</span>
         <br>
-        <button class="buttons">Dette er en knapp</button>
+        <button onclick="buttonClick()" class="buttons">Dette er en knapp</button>
+        <ul class="list">
+            <li>ting 1</li>
+            <li>ting 2</li>
+            <li>ting 3</li>
+            <li>ting 4</li>
+        </ul>
+        <ol>
+            <li>stæsj 1</li>
+            <li>stæsj 2</li>
+            <li>stæsj 3</li>
+            <li>stæsj 4</li>
+        </ol>
+        <img src="Amazing-Good-Night-Image.jpg">
     </div>
+
+    <script>
+        function buttonClick(){
+            let num1 = 7;
+            let num2 = 7;
+
+            let sum = num1 + num2;
+
+            alert(`${num1} + ${num2} = ${sum}`);
+        }
+    </script>
 </body>
 </html>
