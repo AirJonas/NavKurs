@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <style>
+
+    </style>
 </head>
 <body>
     <div id="container">
@@ -18,11 +20,11 @@
             <li>Frisbee golf</li>
             <li>programmering</li>
         </ul>
-        <button class="buttons">Dette er en knapp</button>
+        <button onclick="changeBackgroundColor()" class="buttons">Bytt farge på bakgrunn</button>
     </div>
     <script>
         function changeBackgroundColor(){
-            
+            document.getElementById("container").style.backgroundColor= "grey";
         }
     </script>
 </body>
