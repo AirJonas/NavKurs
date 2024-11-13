@@ -34,7 +34,7 @@
       <button onclick="changeColorOnCircle('red')">Rød lys</button>
       <button onclick="changeColorOnCircle('yellow')">Gul lys</button>
       <button onclick="changeColorOnCircle('green')">Grønn lys</button>
-      <button onclick="automaticColorChange()">Slå På</button>
+      <button onclick="interval()">Slå På</button>
     </div>
     <script> 
       function changeColorOnCircle(color) {
@@ -53,6 +53,13 @@
         }
       }
 
+      function interval(){
+        const myInterval = setInterval(automaticColorChange,4000)
+        setTimeout(() => {
+            clearInterval(myInterval);
+            }, 12000);
+      }
+
       function automaticColorChange() {
             setTimeout(changeColorRed, 1000)
             // setTimeout(() => {
@@ -60,7 +67,6 @@
             // }, 2000);
             setTimeout(changeColorYellow, 2000)
             setTimeout(changeColorGreen, 3000)
-            clearInterval(myTimer)
         
       }
       function changeColorRed() {
