@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dot {
+        height: 70px;
+        width: 70px;
+        background-color: lightgray;
+        border-radius: 50%;
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        margin: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1>Trafikklys</h1>
+      <span class="dot" id="red"></span>
+      <span class="dot" id="yellow"></span>
+      <span class="dot" id="green"></span>
+    </div>
+    <div class="buttons">
+      <button onclick="changeColorOnCircle('red')">Rød lys</button>
+      <button onclick="changeColorOnCircle('yellow')">Gul lys</button>
+      <button onclick="changeColorOnCircle('green')">Grønn lys</button>
+      <button onclick="automaticColorChange()">Slå På</button>
+    </div>
+    <script> 
+      function changeColorOnCircle(color) {
+        if (color == "red") {
+          document.getElementById("red").style.backgroundColor = color;
+          document.getElementById("green").style.backgroundColor = "lightgray";
+          document.getElementById("yellow").style.backgroundColor = "lightgray";
+        } else if (color == "green") {
+          document.getElementById("green").style.backgroundColor = color;
+          document.getElementById("red").style.backgroundColor = "lightgray";
+          document.getElementById("yellow").style.backgroundColor = "lightgray";
+        } else {
+          document.getElementById("red").style.backgroundColor = "red";
+          document.getElementById("yellow").style.backgroundColor = color;
+          document.getElementById("green").style.backgroundColor = "lightgray";
+        }
+      }
+
+      function automaticColorChange() {
+            setTimeout(changeColorRed, 1000)
+            // setTimeout(() => {
+            //   changeColorRed();
+            // }, 2000);
+            setTimeout(changeColorYellow, 2000)
+            setTimeout(changeColorGreen, 3000)
+            clearInterval(myTimer)
+        
+      }
+      function changeColorRed() {
+        document.getElementById("red").style.backgroundColor = "red";
+        document.getElementById("green").style.backgroundColor = "lightgray";
+        document.getElementById("yellow").style.backgroundColor = "lightgray";
+      }
+
+      function changeColorYellow() {
+        document.getElementById("red").style.backgroundColor = "red";
+        document.getElementById("green").style.backgroundColor = "lightgray";
+        document.getElementById("yellow").style.backgroundColor = "yellow";
+      }
+
+      function changeColorGreen() {
+        document.getElementById("red").style.backgroundColor = "lightgray";
+        document.getElementById("green").style.backgroundColor = "green";
+        document.getElementById("yellow").style.backgroundColor = "lightgray";
+      }
+    </script>
+  </body>
+</html>
