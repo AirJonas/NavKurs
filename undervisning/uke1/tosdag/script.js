@@ -1,6 +1,10 @@
-const input = document.getElementById("textInput");
+
 const output = document.getElementById("outputDiv");
 
 function printText(){
-    output.innerHTML = input.value;
+    const input = document.getElementById("textInput").value;
+    
+    output.innerHTML += /*html*/`
+        <li><input type="checkbox">${input}</li>
+    `;
 }

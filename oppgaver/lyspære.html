@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #lyspære{
+            background-color: gray;
+            height: 200px;
+            width: 200px;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="lyspære"></div>
+    <button onclick="turnOfAndOn()" id="bryter">Slå på/av</button>
+    <script>
+        
+
+        function turnOfAndOn(){
+            let lightBulb = document.getElementById("lyspære");
+            if(lightBulb.style.backgroundColor == "gray"){
+                lightBulb.style.backgroundColor = "yellow";
+            } else {
+                lightBulb.style.backgroundColor = "gray";
+            }
+        }
+    </script>
+</body>
+</html>

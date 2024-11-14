@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Span{
+            padding: 5px;
+            border-style: solid;
+        }
+        #output{
+            height: 50px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">
+        
+    </div>
+    <span id="Span" onclick="pushedLetter(this)">Q</span>
+    <span id="Span" onclick="pushedLetter(this)">W</span>
+    <span id="Span" onclick="pushedLetter(this)">E</span>
+    <span id="Span" onclick="pushedLetter(this)">R</span>
+    <span id="Span" onclick="pushedLetter(this)">T</span>
+    <span id="Span" onclick="pushedLetter(this)">Y</span>
+    <span id="Span" onclick="pushedLetter(this)">U</span>
+    <span id="Span" onclick="pushedLetter(this)">I</span>
+    <span id="Span" onclick="pushedLetter(this)">O</span>
+    <span id="Span" onclick="pushedLetter(this)">P</span>
+    <span id="Span" onclick="pushedLetter(this)">Å</span>
+    <span id="Span" onclick="pushedLetter(this)">A</span>
+    <span id="Span" onclick="pushedLetter(this)">S</span>
+    <span id="Span" onclick="pushedLetter(this)">D</span>
+    <span id="Span" onclick="pushedLetter(this)">F</span>
+    <span id="Span" onclick="pushedLetter(this)">G</span>
+    <span id="Span" onclick="pushedLetter(this)">H</span>
+    <span id="Span" onclick="pushedLetter(this)">J</span>
+
+
+    <script>
+        let output = document.getElementById("output");
+
+
+        function pushedLetter(htmlElement){
+            let letterPressed = htmlElement.innerHTML;
+
+            output.innerHTML += /*html*/`
+            <span>${letterPressed}</span>
+            `;
+        } 
+    </script>
+</body>
+</html>
