@@ -6,6 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h3> Make first letter uppercase</h3>
+    <input id="text" type="text">
+    <button onclick="capitalizeFirstLetter()">Make it big</button>
+    <div id="uppercaseText"></div>
+    <script>
+        let output = document.getElementById("uppercaseText");
+        function capitalizeFirstLetter(){
+            let input = document.getElementById("text").value;
+            output.innerHTML = input.charAt(0).toUpperCase()
+            + input.slice(1)
+        }
+    </script>
 </body>
 </html>
