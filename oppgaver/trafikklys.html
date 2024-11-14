@@ -61,6 +61,13 @@
         let myInterval = setInterval(automaticColorChange, 4000)
       }
 
+      function interval(){
+        const myInterval = setInterval(automaticColorChange,4000)
+        setTimeout(() => {
+            clearInterval(myInterval);
+            }, 12000);
+      }
+
       function automaticColorChange() {
             setTimeout(changeColorRed, 1000)
             // setTimeout(() => {
@@ -68,8 +75,11 @@
             // }, 2000);
             setTimeout(changeColorYellow, 2000)
             setTimeout(changeColorGreen, 3000)
+<<<<<<< HEAD
             counter = counter + 1
             alert(counter)
+=======
+>>>>>>> 34c48d08a3b7b81c18e5163e4739d7afafbf7b53
         
       }
       function changeColorRed() {
