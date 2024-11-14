@@ -37,36 +37,34 @@
       <button onclick="interval()">Slå På</button>
     </div>
     <script> 
+
+    let colorRed = document.getElementById("red");
+    let colorGreen = document.getElementById("green");
+    let colorYellow = document.getElementById("yellow");
+
       function changeColorOnCircle(color) {
         if (color == "red") {
-          document.getElementById("red").style.backgroundColor = color;
-          document.getElementById("green").style.backgroundColor = "lightgray";
-          document.getElementById("yellow").style.backgroundColor = "lightgray";
+          colorRed.style.backgroundColor = color;
+          colorGreen.style.backgroundColor = "lightgray";
+          colorYellow.style.backgroundColor = "lightgray";
         } else if (color == "green") {
-          document.getElementById("green").style.backgroundColor = color;
-          document.getElementById("red").style.backgroundColor = "lightgray";
-          document.getElementById("yellow").style.backgroundColor = "lightgray";
+          colorGreen.style.backgroundColor = color;
+          colorRed.style.backgroundColor = "lightgray";
+          colorYellow.style.backgroundColor = "lightgray";
         } else {
-          document.getElementById("red").style.backgroundColor = "red";
-          document.getElementById("yellow").style.backgroundColor = color;
-          document.getElementById("green").style.backgroundColor = "lightgray";
+          colorRed.style.backgroundColor = "red";
+          colorYellow.style.backgroundColor = color;
+          colorGreen.style.backgroundColor = "lightgray";
         }
-      }
-      let counter = 0;
-      function interval(){
-        counter = 0;
-        if(counter == 3){
-            clearInterval(myInterval)
-        }
-        let myInterval = setInterval(automaticColorChange, 4000)
       }
 
       function interval(){
         const myInterval = setInterval(automaticColorChange,4000)
         setTimeout(() => {
-            clearInterval(myInterval);
-            }, 12000);
-      }
+        clearInterval(myInterval);
+        }, 12000);
+
+}
 
       function automaticColorChange() {
             setTimeout(changeColorRed, 1000)
@@ -74,30 +72,24 @@
             //   changeColorRed();
             // }, 2000);
             setTimeout(changeColorYellow, 2000)
-            setTimeout(changeColorGreen, 3000)
-<<<<<<< HEAD
-            counter = counter + 1
-            alert(counter)
-=======
->>>>>>> 34c48d08a3b7b81c18e5163e4739d7afafbf7b53
-        
+            setTimeout(changeColorGreen, 3000)        
       }
       function changeColorRed() {
-        document.getElementById("red").style.backgroundColor = "red";
-        document.getElementById("green").style.backgroundColor = "lightgray";
-        document.getElementById("yellow").style.backgroundColor = "lightgray";
+        colorRed.style.backgroundColor = "red";
+        colorGreen.style.backgroundColor = "lightgray";
+        colorYellow.style.backgroundColor = "lightgray";
       }
 
       function changeColorYellow() {
-        document.getElementById("red").style.backgroundColor = "red";
-        document.getElementById("green").style.backgroundColor = "lightgray";
-        document.getElementById("yellow").style.backgroundColor = "yellow";
+        colorRed.style.backgroundColor = "red";
+        colorGreen.style.backgroundColor = "lightgray";
+        colorYellow.style.backgroundColor = "yellow";
       }
 
       function changeColorGreen() {
-        document.getElementById("red").style.backgroundColor = "lightgray";
-        document.getElementById("green").style.backgroundColor = "green";
-        document.getElementById("yellow").style.backgroundColor = "lightgray";
+        colorRed.style.backgroundColor = "lightgray";
+        colorGreen.style.backgroundColor = "green";
+        colorYellow.style.backgroundColor = "lightgray";
       }
     </script>
   </body>
