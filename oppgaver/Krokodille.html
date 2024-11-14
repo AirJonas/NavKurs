@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <span id="Points">Points:</span>
+    <span id="pointsNumber"></span>
+    <br>
+    <img id="crocodile" src="https://www.reptilepark.com.au/wp-content/uploads/2023/07/Website-news-article-feature-imagethumbnail-800-x500-60.png" alt="">
+    <br>
+    <span id="number1">0</span>
+    <br>
+    <input id="operatorText" type="text">
+    <br>
+    <span id="number2">0</span>
+    <br>
+    <button onclick="submit()" id="submit">Submit</button>
+    <button onclick="reset()" id="submit">Reset</button>
+    <script>
+        let inputOP = document.getElementById("operatorText");
+        let points = 0;
+        let number1 = document.getElementById("number1");
+        let number2 = document.getElementById("number2");
+        let pointstext = document.getElementById("pointsNumber");
+        function submit(){
+            let num1 = Math.floor(Math.random() * 10) + 1;
+            let num2 = Math.floor(Math.random() * 10) + 1;
+            number1.innerHTML = num1;
+            number2.innerHTML = num2;
+
+            if(inputOP.value == "<"){
+                if(num1 < num2){
+                    points++
+                }
+            }
+
+            if(inputOP.value == "="){
+                if(num1 == num2){
+                    points++
+                }
+            }
+
+            if(inputOP.value == ">"){
+                if(num1 > num2){
+                    alert(5)
+                    points++
+                }
+            }
+
+            pointstext.innerHTML = points;
+        }
+
+        function reset(){
+            number1.innerHTML = 0;
+            number2.innerHTML = 0;
+            pointstext.innerHTML = 0;
+        }
+    </script>
+</body>
+</html>
