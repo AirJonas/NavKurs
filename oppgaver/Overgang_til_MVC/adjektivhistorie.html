@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button{
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="group">
+        <span><span id="Charackter">_____</span> likes to <span id="action"> _____ </span>the <span id="objeckt">____</span></span>
+        <br>
+        <button class="button" onclick="putInCharacter('Cat')">Cat</button><button onclick="putInCharacter('John')" class="button">John</button>
+        <br>
+        <button class="button" onclick="putInAction('eat ')">Eat</button><button class="button" onclick="putInAction('drive ')">Drive</button>
+        <br>
+        <button class="button" onclick="putInObject('fish')"> Fish</button><button class="button" onclick="putInObject('sport car')">Sport car</button>
+    </div>
+    <script>
+        let character = document.getElementById("Charackter");
+        let action = document.getElementById("action");
+        let object = document.getElementById("objeckt");
+
+        function putInCharacter(word){
+            character.innerHTML = word;
+        }
+        function putInAction(word){
+            action.innerHTML = word;
+        }
+        function putInObject(word){
+            object.innerHTML = word;
+        }
+    </script>
+</body>
+</html>
