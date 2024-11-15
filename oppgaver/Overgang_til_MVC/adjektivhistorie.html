@@ -11,28 +11,46 @@
     </style>
 </head>
 <body>
-    <div id="group">
-        <span><span id="Charackter">_____</span> likes to <span id="action"> _____ </span>the <span id="objeckt">____</span></span>
-        <br>
-        <button class="button" onclick="putInCharacter('Cat')">Cat</button><button onclick="putInCharacter('John')" class="button">John</button>
-        <br>
-        <button class="button" onclick="putInAction('eat ')">Eat</button><button class="button" onclick="putInAction('drive ')">Drive</button>
-        <br>
-        <button class="button" onclick="putInObject('fish')"> Fish</button><button class="button" onclick="putInObject('sport car')">Sport car</button>
-    </div>
-    <script>
-        let character = document.getElementById("Charackter");
-        let action = document.getElementById("action");
-        let object = document.getElementById("objeckt");
+    
+    <div id="app"></div>
+    
+    <script>   
+        //model
+        let character = "_____";
+        let action = "_____";
+        let object = "_____";
 
+        //view
+        setField()
+        function setField(){
+            let html = /*html*/ `
+            <div id="group">
+            <span><span id="Charackter">${character}</span> likes to <span id="action"> ${action} </span>the <span id="objeckt">${object}</span></span>
+            <br>
+            <button class="button" onclick="putInCharacter('Cat')">Cat</button>
+            <button onclick="putInCharacter('John')" class="button">John</button>
+            <br>
+            <button class="button" onclick="putInAction('eat ')">Eat</button>
+            <button class="button" onclick="putInAction('drive ')">Drive</button>
+            <br>
+            <button class="button" onclick="putInObject('fish')"> Fish</button>
+            <button class="button" onclick="putInObject('sport car')">Sport car</button>
+          `;
+          document.getElementById('app').innerHTML = html;
+        }
+
+        //controller
         function putInCharacter(word){
-            character.innerHTML = word;
+            character = word;
+            setField()
         }
         function putInAction(word){
-            action.innerHTML = word;
+            action = word;
+            setField()
         }
         function putInObject(word){
-            object.innerHTML = word;
+            object = word;
+            setField()
         }
     </script>
 </body>
