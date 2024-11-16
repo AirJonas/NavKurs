@@ -21,10 +21,10 @@
 
         function setField(){
             let html = /*html*/ `
-            <input type="text">
+            <input type="text" onchange="text = this.value">
             <button class="button" onclick="findVocals()">Finn vokaler</button>
             <br>
-            <span> det finnes ${aCounter} vokaler i teksten ${text} </span>
+            <span> Det finnes ${aCounter} vokaler i teksten ${text} </span>
         `;
 
         document.getElementById('app').innerHTML = html;
