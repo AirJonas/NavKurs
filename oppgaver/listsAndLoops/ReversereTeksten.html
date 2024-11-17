@@ -13,18 +13,17 @@
     <script>   
         //model
         let text = "";
-        let aCounter = 0;
+        let answer = "";
         
-
         //view
         setField()
 
         function setField(){
             let html = /*html*/ `
             <input type="text" onchange="text = this.value">
-            <button class="button" onclick="findVocals()">Finn vokaler</button>
+            <button class="button" onclick="flipText()">reverser teksten</button>
             <br>
-            <span> Det finnes ${aCounter} vokaler i teksten ${text} </span>
+            <span> Det er din reveserte text: ${answer} </span>
         `;
 
         document.getElementById('app').innerHTML = html;
@@ -32,14 +31,10 @@
         }
 
         //controller
-        function findVocals(){
-            aCounter = 0;
-            for (let i=0; i <= text.length; i++){
-                if(text.charAt(i) == 'a' || text.charAt(i) == 'e' || text.charAt(i) == 'i' ||
-                text.charAt(i) == 'o' || text.charAt(i) == 'u' || text.charAt(i) == 'y' || 
-                text.charAt(i) == 'æ' || text.charAt(i) == 'ø' || text.charAt(i) == 'å'){
-                    aCounter++
-                }
+        function flipText(){
+            answer ="";
+            for (let i= text.length; i >= 0; i--){
+                answer = answer + text.charAt(i);
             }
             setField();
         }
