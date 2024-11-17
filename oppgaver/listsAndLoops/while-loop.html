@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script>   
+        //model
+        let answer = "";
+        let bolean = false;
+        let num1 = 0;
+        let num2 = 0;
+        
+        //view
+        setField()
+
+        function setField(){
+            let html = /*html*/ `
+            <button class="button" onclick="findSameNumbers()">Find the same numbers</button>
+            <br>
+            <span> ${answer} </span>
+        `;
+
+        document.getElementById('app').innerHTML = html;
+
+        }
+
+        //controller
+        function findSameNumbers(){
+            answer ="";
+            bolean = true;
+            while(bolean == true){
+                num1 = Math.floor(Math.random() * 10);
+                num2 = Math.floor(Math.random() * 10);
+                if(num1 == num2){
+                    answer = "Two randoms equal numbers found is " + num1 + " and " + num2;
+                    bolean = false;
+                }
+                else{
+                    console.log(num1)
+                    console.log(num2)
+                }
+            }
+            setField();
+        }
+    </script>
+</body>
+</html>
