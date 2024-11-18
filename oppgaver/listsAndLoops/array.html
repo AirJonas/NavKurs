@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script>   
+        //model
+        let text = "";
+        let answer = "";
+        let listOfItems =[ "hat", "pencil", "dinosaur"];
+        
+        //view
+        setField()
+
+        function setField(){
+            let html = /*html*/ `
+            <input type="text" onchange="text = this.value">
+            <button onclick="addToList()">legge til liste</button>
+            <button class="button" onclick="seeWhatIsInList()">vis listen</button>
+            <br>
+            <span> ${answer} </span>
+        `;
+
+        document.getElementById('app').innerHTML = html;
+
+        }
+
+        //controller
+        function seeWhatIsInList(){
+            answer ="";
+            for (let i=0; i < listOfItems.length; i++){
+                answer = answer + "<li>" + listOfItems[i] + "</li>";
+            }
+            setField();
+        }
+        function addToList(){
+            listOfItems.push(text);
+            seeWhatIsInList();
+        }
+    </script>
+</body>
+</html>
