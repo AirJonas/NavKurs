@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script>   
+        //model
+        let text = "";
+        let answerOf8Ball =[ "It is certain", "try again", "Dont count on it", "It is decidedly so",
+            "Ask again later", "My reply is no", "Yes definitely" ,"Better not tell you now", "Very doubtful",
+            "Most likely" , "Outlook good", "Yes"];
+        let gottenAnswer = [];
+        let randomIndex = null;
+        
+
+        //view
+        setField()
+
+        function setField(){
+            let html = /*html*/ `
+            <button class="button" onclick="ballAnswer()">Ask the 8 ball</button>
+            <br>
+            <span> yout answer is: ${text} </span>
+        `;
+
+        document.getElementById('app').innerHTML = html;
+
+        }
+
+        //controller
+        function ballAnswer(){
+            randomIndex = Math.floor(Math.random() * answerOf8Ball.length);
+            if(gottenAnswer.includes(answerOf8Ball[randomIndex])){
+                ballAnswer()
+            } else {
+                text = answerOf8Ball[randomIndex];
+                gottenAnswer.pop();
+                gottenAnswer.push(text);
+                setField();
+            }
+            console.log(randomIndex);
+            
+        }
+    </script>
+</body>
+</html>
