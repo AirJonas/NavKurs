@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script>   
+        //model
+        let text = "";
+        let answer = null;
+
+        //view
+        setField()
+
+        function setField(){
+            let html = /*html*/ `
+            <input type="text" onchange="text = this.value">
+            <button class="button" onclick="checkIfEmailIsValid()">check if email is valid</button>
+            <br>
+            <span> youre email is ${answer} </span>
+        `;
+
+        document.getElementById('app').innerHTML = html;
+
+        }
+
+        //controller
+        function checkIfEmailIsValid(){
+            for (let i = 0; i <= text.length; i++){
+                if(text[i] === "@"){
+                    
+
+                } else return false
+            }
+            setField();
+        }
+    </script>
+</body>
+</html>
