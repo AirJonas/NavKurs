@@ -32,12 +32,14 @@
 
         //controller
         function checkIfEmailIsValid(){
-            for (let i = 0; i <= text.length; i++){
-                if(text[i] === "@"){
-                    
-
-                } else return false
-            }
+            let indexOfAT = text.indexOf("@");
+            let indexOfDot = text.indexOf(".");
+            console.log(indexOfAT); 
+                if(text.includes("@") && !(text.includes(" ")) && indexOfAT < indexOfDot){
+                    answer = true;
+                } else {
+                    answer = false;
+                }
             setField();
         }
     </script>
