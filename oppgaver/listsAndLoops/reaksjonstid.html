@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lights{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: lightgray;
+        }
+
+        #game{
+            width: 268px;
+            height: 268px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            background-color: gray;
+            padding-top: 2px;
+            padding-left: 3px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>   
+        //model
+        const app = document.getElementById('app');
+        
+        //view
+        updateView()
+
+        function updateView(){
+            app.innerHTML = /*html*/ `
+            <div id="game">
+                ${fillCircles()}
+            </div>
+        `;
+
+        }
+
+        //controller
+        function fillCircles(){
+            let html =""
+            for(let i = 0; i < 25; i++){
+                html += /*HTML*/ `<div class='lights'  id="id${i}"></div>
+                `;
+                }
+            return html;
+            }
+    </script>
+</body>
+</html>
