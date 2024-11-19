@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .store{
+            border: 2px, solid;
+        }
+
+        .invetory{
+            border:2px, solid;
+        }
+
+        .images{
+            width: 50px;
+            height: 50px;
+        }
+
+
+        #flex-box{
+            display: flex;
+        }
+        #Storegrid{
+            width: 268px;
+            height: 268px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background-color: gray;
+            border: 1px, solid;
+        }
+
+        #inventorygrid{
+            width: 268px;
+            height: 268px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background-color: gray;
+            border: 1px, solid;
+            margin-left: 100px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+
+    <img src=${pictures[i]} alt="">
+    <div id="app"></div>
+    <script>   
+        //model
+        const app = document.getElementById('app');
+        let pictures = ["coke.png", "headbag.png", "jewels.png", "sandwich.png", "snacks.png", "snowball.png", "sportlunch.png", "stone.png", "umbrella.png", "vine.png", "vodka.png", "weed.png"];
+        
+        //view
+        updateView()
+
+        function updateView(){
+            app.innerHTML = /*html*/ `
+            <div id="flex-box">
+                <div id="Storegrid">
+                    ${store()}
+                </div>
+                <div id="inventorygrid">
+                    ${inventory()}
+                </div>
+            </div>
+        `;
+
+        }
+
+        //controller
+        function store(){
+            let html =""
+            for(let i = 0; i < pictures.length; i++){
+                html += /*HTML*/ `<div class='store' id="storeid${i}"><img  class="images" src=${pictures[i]} alt=""></div>
+                `;
+                }
+            return html;
+            }
+
+            function inventory(){
+            let html =""
+            for(let i = 0; i < 12; i++){
+                html += /*HTML*/ `<div class='invetory' id="inventoryid${i}"></div>
+                `;
+                }
+            return html;
+            }
+    </script>
+</body>
+</html>
