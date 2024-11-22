@@ -31,6 +31,7 @@
         //model
         const app = document.getElementById('app');
         
+        
         //view
         updateView()
 
@@ -39,6 +40,7 @@
             <div id="game">
                 ${fillCircles()}
             </div>
+            <button onclick="chooseRandomCircle()">Start Game</button>
         `;
 
         }
@@ -47,11 +49,27 @@
         function fillCircles(){
             let html =""
             for(let i = 0; i < 25; i++){
-                html += /*HTML*/ `<div class='lights'  id="id${i}"></div>
+                html += /*HTML*/ `<div class='lights' onclick="clickedYellow(this.id)" id="id${i}"></div>
                 `;
                 }
             return html;
             }
+        
+        function chooseRandomCircle(){
+            let randomCircle = Math.floor(Math.random() * 24);
+            let lightCircle = document.getElementById("id"+ randomCircle);
+            lightCircle.style.cssText = "background-color:yellow;"
+        }
+
+        function clickedYellow(element){
+            let yellowCircle = document.getElementById(element);
+            console.log(yellowCircle);
+            if(yellowCircle.style.backgroundColor == "yellow"){
+                yellowCircle.style.backgroundColor = "lightgray";
+                chooseRandomCircle();
+            }
+        }
+
     </script>
 </body>
 </html>
