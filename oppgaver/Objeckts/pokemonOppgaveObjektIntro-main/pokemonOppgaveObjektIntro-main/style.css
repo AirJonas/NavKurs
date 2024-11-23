@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto+Condensed:wght@700&display=swap");
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+  width: 98vw;
+  font-family: "Orbitron", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 32px;
+}
+
+.opposingPokemon {
+  margin-left: 50%;
+}
+
+button {
+  height: 100px;
+  width: 100px;
+}
+
+.buttonContainer {
+  width: 200px;
+  display: flex;
+  margin-bottom: 22px;
+  margin-left: 50%;
+}
+
+img {
+  width: auto;
+  height: 250px;
+}
+
+.bottomScreen {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.caughtContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pokemonPartyContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 220px);
+}
+
+.pokemonBoxDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 3px solid rgb(107, 222, 115);
+  background-image: linear-gradient(rgb(0, 107, 33), rgb(49, 222, 82));
+  margin: 10px;
+  padding: 5px;
+}
+
+.partyImg {
+  width: 40px;
+  height: 40px;
+}
+
+#pokemonGrid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.caughtImagePokemon{
+  width: 100px;
+  height: 100px;
+}
