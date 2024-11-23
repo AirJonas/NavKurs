@@ -30,6 +30,12 @@
     <script>   
         //model
         const app = document.getElementById('app');
+        let counter = 0;
+        let startTime;
+        let finishTime;
+        let spentMilliseconds;
+        let spentSeconds;
+        let avrageSpeed = null;
         
         
         //view
@@ -40,7 +46,8 @@
             <div id="game">
                 ${fillCircles()}
             </div>
-            <button onclick="chooseRandomCircle()">Start Game</button>
+            <button id="startgame" onclick="chooseRandomCircle()">Start Game</button>
+            <div>Avrage reaksjon speed: ${avrageSpeed} sec. </div>
         `;
 
         }
@@ -59,6 +66,12 @@
             let randomCircle = Math.floor(Math.random() * 24);
             let lightCircle = document.getElementById("id"+ randomCircle);
             lightCircle.style.cssText = "background-color:yellow;"
+            document.getElementById("startgame").disabled = true;
+            if(counter == 0){
+                startTime = new Date().getTime();
+            }
+            
+
         }
 
         function clickedYellow(element){
@@ -66,7 +79,17 @@
             console.log(yellowCircle);
             if(yellowCircle.style.backgroundColor == "yellow"){
                 yellowCircle.style.backgroundColor = "lightgray";
-                chooseRandomCircle();
+                counter++;
+                if(counter == 10){
+                    finishTime = new Date().getTime();
+                    spentMilliseconds = finishTime - startTime;
+                    spentSeconds = spentMilliseconds/1000;
+                    avrageSpeed = (spentSeconds/10).toFixed(4);
+                    updateView()
+                }else{
+                    chooseRandomCircle();
+                }
+                
             }
         }
 
