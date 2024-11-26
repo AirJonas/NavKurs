@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksamen, oppgave 2</title>
+    <link href="exam2.css" rel="stylesheet" media="all">
+</head>
+<body class="lato-regular" onload="startTime()">
+    <main>
+        <section id="contacts">
+            <h2>Kontakter</h2>
+            <div id="contactlist"></div>
+        </section>
+        <aside id="clock">13:37</aside>
+        <section id="books">
+            <h2>Regnskap</h2>
+            <p>Innkommende egenkapital: Kr. <span id="incomingequity"></span></p>
+            <section id="book">
+                <h3>Bokføring, november</h3>
+                <div id="bookhead" class="bookline">
+                    <span class="booktext">Kvittering</span>
+                    <span class="bookdate">Dato</span>
+                    <span class="bookamount">Sum</span>
+                </div>
+                <div id="booklines" >
+                    <!-- Skal genereres fra datakilde i <script>. Oppføringen under er for å vise HTML-strukturen -->
+                </div>
+            </section>
+            <p>Balanse november: Kr. <span id="balance">-</span></p>
+            <p>Egenkapital: Kr. <span id="equity">-</span></p>
+        </section>
+        <section id="todoform">
+            <h2>Ny oppgave</h2>
+            <p><label for="task">Oppgavetekst:</label><br /><input type="text" id="task" /><button id="savetask">Lagre</button></p>
+        </section>
+        <section id="todos">
+            <h2>Oppgaver</h2>
+            <ul id="todolist">
+                <!-- De to listeelementene skal byttes ut med utskrift av data fra programkoden i <script> -->
+                <li>
+                    <span class="tast-text">Les eksamensteksten</span>
+                    <span class="task-status task-status-done">Done</span>
+                </li>
+                <li>
+                    <span class="tast-text">Løs oppgavene i InnfProg-eksamen</span>
+                    <span class="task-status task-status-todo">To do</span>
+                </li>
+            </ul>
+        </section>
+        <footer><p>Adminpanel IPv1.0</p></footer>
+    </main>
+
+    <script>
+        //CONTACTS
+        const contacts = [
+            {lastname: "Hansen", firstname: "Stine", office: "D2", mail: "s.hansen@company.com"},
+            {lastname: "Andersen", firstname: "Willy", office: "D1", mail: "w.andersen@company.com"},
+            {lastname: "Danilo", firstname: "Luciano", office: "E2", mail: "l.danilo@company.com"},
+            {lastname: "Wester", firstname: "Zato", office: "C3", mail: "z.wester@company.com"},
+            {lastname: "Jansson", firstname: "Sigried", office: "B1", mail: "s.jansson@company.com"}
+        ]
+
+        let contactlist = ""
+
+        contacts.map((contact, index) => {
+            contactlist += `<article>
+                <p><strong>${contact.lastname}, ${contact.firstname}</strong><br />
+                    Kontor: ${contact.office} | E-post: ${contact.mail}</p>
+            </article>`
+        })
+
+        document.getElementById("contactlist").innerHTML = contactlist
+        
+        //BOOKS
+        const books = [
+            {text: "Printerblekk", date: "02.11.24", amount: -750},
+            {text: "Printerpapir", date: "02.11.24", amount: -439},
+            {text: "Nettbutikksalg, uke 44", date: "06.11.24", amount: 3428},
+            {text: "Produksjonsmateriale", date: "07.11.24", amount: -1299},
+            {text: "Kontorrekvisita", date: "10.11.24", amount: -644},
+            {text: "Nettbutikksalg, uke 45", date: "13.11.24", amount: 2988}
+        ]
+        let bookList = document.getElementById('booklines')
+        for (let i=0; i<books.length; i++){
+            bookList.innerHTML += /*html*/`
+            <div class="bookline">
+            <span class="booktext"> ${books[i].text}</span>
+            <span class="bookdate">${books[i].date}</span>
+            <span class="bookamount">${books[i].amount}</span>
+            </div>
+            `;
+        }
+
+        let equity = 23782; //Penger på konto ved inngangen til november
+        document.getElementById("incomingequity").innerHTML = equity
+        let balance = 0;    //Startbalanse for utregning av utgifter og inntekter i november
+        for (let i=0; i<books.length; i++){
+            balance += books[i].amount
+        }
+        document.getElementById("balance").innerHTML = balance;
+        document.getElementById("equity").innerHTML = equity + balance;
+        //TODOS
+        const todos = [
+            {text: "Les eksamensteksten", status: "Done"},
+            {text: "Løs Innføring i programmerings-eksamen", status: "To do"},
+            {text: "Lag funksjonalitet for å registrere nye oppgaver", status: "To do"},
+            {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
+        ]
+
+        
+        //CLOCK
+        
+        function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+    </script>
+</body>
+</html>

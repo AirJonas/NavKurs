@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnfProg 2024 - deleksamen 1</title>
+    <link href="exam1.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <main>
+        <h2 id="heading"></h2>
+        <p id="intro"></p>
+        <ul>
+            <li id="q1"></li>
+            <li id="q2"></li>
+            <li id="q3"></li>
+        </ul>
+        <p id="delivery"></p>
+    </main>
+
+    <script>
+        const code = {
+            hx: "Efmfltbnfo 1",
+            ix: "A sfuuf gfjmfof ph lpnnfoufsf lpefo wbs cbsf gåstuf efm bw pqqhbwfo. Ev tlbm phta ub gps efh ufltufo ev tlsfw j bscfjetlsbw 1, ph tlsjwf fu ozuu sfgmfltkpotopubu oa oas ev ibs hkfoopngåsu lvstfu. J efuuf sfgmfltkpotopubufu, twbs qa gåmhfoef tqåstnam:",
+            qx: ["Botfs ev qsphsbnnfsjoh tpn ozuujh?", "Tfs ev gps efh bu ev wjm csvlf qsphsbnnfsjoh j ejuu wjefsf tuvejfmåq?", "Iwps npujwfsu fs ev gps a vugpstlf qsphsbnnfsjoh wjefsf fuufs lvstfu?"],
+            // needed to change "=" to ":"
+            dx: "Mbh fo QEG bw eplvnfoufu, ph mfhh wfe caef efuuf eplvnfoufu tbnu cftwbsfmtfo gps bscfjetlsbw 1 j cftwbsfmtfo ujm efmfltbnfo 1."
+        }
+
+        function decode(input) {
+            const alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'
+            //forgot to end the string with _'_
+            const alphabetUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ'
+
+            const getPreviousChar = (char, alphabet) => {
+                const index = alphabet.indexOf(char);
+                return index === -1 ? char : alphabet[(index - 1 + alphabet.length) % alphabet.length];
+            };
+
+            return input.split('').map(char=> {
+                //capital T needs to go away
+                if (alphabet.includes(char)) {
+                    return getPreviousChar(char, alphabet)
+                } else if (alphabetUpper.includes(char)) {
+                    return getPreviousChar(char, alphabetUpper)
+                }
+                return char
+            }).join('')
+        }
+
+        //PRINT DECODED MATERIAL
+        document.getElementById("heading").innerHTML = decode(code.hx)
+        document.getElementById("intro").innerHTML = decode(code.ix)
+        //written innerhtml wrong
+        document.getElementById("q1").innerHTML = decode(code.qx[0])
+        //capital D is wrong
+        document.getElementById("q2").innerHTML = decode(code.qx[1])
+        //missed bracket at the end
+        document.getElementById("q3").innerHTML = decode(code.qx[2])
+        document.getElementById("delivery").innerHTML = decode(code.dx)
+    </script>
+</body>
+</html>
