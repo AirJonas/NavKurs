@@ -52,15 +52,17 @@
             return color;
         }
 
+        position = 0;
+        test = "la"
         function setRandomColor(){
-            let box = {}
-            for (let i=0; i < colors.length; i++){
-                box = 
-                ctx.fillStyle = colors[i].box.color;
-                ctx.fillRect(0,colors[i].box.posistion,100,100);
-            }
-            
+            if(position < 1000){
+                ctx.fillStyle = getRandomColor();
+                ctx.fillRect(position,0,100,100);
+                position = position + 100
+            } else return;
         }
+
+        
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
         function renderCanvas() {
