@@ -32,20 +32,13 @@
         </section>
         <section id="todoform">
             <h2>Ny oppgave</h2>
-            <p><label for="task">Oppgavetekst:</label><br /><input type="text" id="task" /><button id="savetask">Lagre</button></p>
+            <p><label for="task">Oppgavetekst:</label>
+                <br/><input type="text" id="task" /><button id="savetask" onclick="addTask()">Lagre</button></p>
         </section>
         <section id="todos">
             <h2>Oppgaver</h2>
             <ul id="todolist">
                 <!-- De to listeelementene skal byttes ut med utskrift av data fra programkoden i <script> -->
-                <li>
-                    <span class="tast-text">Les eksamensteksten</span>
-                    <span class="task-status task-status-done">Done</span>
-                </li>
-                <li>
-                    <span class="tast-text">Løs oppgavene i InnfProg-eksamen</span>
-                    <span class="task-status task-status-todo">To do</span>
-                </li>
             </ul>
         </section>
         <footer><p>Adminpanel IPv1.0</p></footer>
@@ -63,10 +56,12 @@
 
         let contactlist = ""
 
+        contacts.sort((a, b) => a.lastname.localeCompare(b.lastname));
+
         contacts.map((contact, index) => {
-            contactlist += `<article>
+            contactlist += /*html*/`<article>
                 <p><strong>${contact.lastname}, ${contact.firstname}</strong><br />
-                    Kontor: ${contact.office} | E-post: ${contact.mail}</p>
+                    Kontor: ${contact.office} | E-post: <a href="mailto:${contact.mail}">${contact.mail}</a></p>
             </article>`
         })
 
@@ -101,13 +96,56 @@
         document.getElementById("balance").innerHTML = balance;
         document.getElementById("equity").innerHTML = equity + balance;
         //TODOS
+
         const todos = [
             {text: "Les eksamensteksten", status: "Done"},
             {text: "Løs Innføring i programmerings-eksamen", status: "To do"},
             {text: "Lag funksjonalitet for å registrere nye oppgaver", status: "To do"},
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
+        todoView()
+        function todoView(){
+            document.getElementById('todolist').innerHTML = ""
+            for (let i = 0; i < todos.length; i++){
+            let className
+            if(todos[i].status == "Done"){
+                className = "task-status-done"
+            } else {
+                className = "task-status-todo"
+            }
+            document.getElementById('todolist').innerHTML += /*html*/`
+                <li>
+                    <span class="tast-text">${todos[i].text}</span>
+                    <span class="task-status ${className}" onclick="changeClass(${i})">${todos[i].status}</span>
+                </li>
+            `;
+        }
+        }
 
+        function addTask(){
+            let textField = document.getElementById("task")
+            if(textField.value == ""){
+               textField.placeholder = "Det må fylles med text" 
+            } else {
+                textField.placeholder = "";
+                todos.push({
+                text: textField.value, status: "To do"
+            })
+            textField.value = "";
+            }
+            todoView()
+        }
+        
+
+        function changeClass(i){
+            if(todos[i].status == "Done"){
+                todos[i].status = "To Do"
+            } else {
+                todos[i].status = "Done"
+            }
+            todoView()
+        }
+        
         
         //CLOCK
         
