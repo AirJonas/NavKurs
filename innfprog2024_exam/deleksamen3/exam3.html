@@ -28,7 +28,7 @@
                 <option value="7">8</option>
                 <option value="8">9</option>
                 <option value="9">10</option>
-            </select> med #<input type="text" id="newColor" /> <button id="saveNewColor">Lagre ny farge</button></p>
+            </select> med #<input type="text" id="newColor" /> <button id="saveNewColor" onclick="changeColor()">Lagre ny farge</button></p>
         </section>
     </main>
     
@@ -42,8 +42,33 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
+        let dropDown = document.getElementById("colorSquareIndex");
         let box ={};
-        let boxes =[]
+        let boxes =[];
+        let addColorButton = document.getElementById("addColor");
+
+        function paint(){
+            for(let i = 0; i < boxes.length; i++){
+                ctx.fillStyle = boxes[i].color;
+                ctx.fillRect(boxes[i].position,0,100,100);
+
+                ctx.fillStyle = "white";
+                ctx.fillRect(boxes[i].position,0,75,20)
+
+                ctx.font ="normal 15px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(boxes[i].color,boxes[i].position + 5,15);
+
+                ctx.fillStyle = "white";
+                ctx.fillRect(boxes[i].position + 80,80,20,20)
+
+                ctx.font ="normal 15px Arial";
+                ctx.fillStyle = boxes[i].color;
+                ctx.fillText(i+1,boxes[i].position+86,95);
+
+            }
+        }
+
         function getRandomColor(){
             let letters ="0123456789ABCDEF";
             let color = "#";
@@ -56,23 +81,37 @@
         function setRandomColor(){
             if(position < 1000){
                 randomColor = getRandomColor();
-                ctx.fillStyle = randomColor;
-                ctx.fillRect(position,0,100,100);
                 box = {color: randomColor, position: position}
                 boxes.push(box);
+                paint()
                 position = position + 100;
+                if(position == 1000){
+                    addColorButton.disabled = true;
+                }
             } else return;
         }
 
         function clearCanvas(){
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             position = 0;
-            boxes=[]
+            boxes=[];
+            addColorButton.disabled = false;
         }
 
         function generate10Colors(){
             while(position<1000){
                 setRandomColor()
+            }
+        }
+
+        function changeColor(){
+            let input = document.getElementById("newColor").value;
+            if(dropDown.value < boxes.length){
+                console.log(dropDown.value);
+                boxes[dropDown.value].color = '#'+input;
+                paint()
+            } else {
+                alert("ingen farge generert på index:" + dropDown.value);
             }
         }
 
