@@ -106,13 +106,18 @@
 
         function changeColor(){
             let input = document.getElementById("newColor").value;
-            if(dropDown.value < boxes.length){
-                console.log(dropDown.value);
-                boxes[dropDown.value].color = '#'+input;
-                paint()
-            } else {
-                alert("ingen farge generert på index:" + dropDown.value);
-            }
+            
+                if(dropDown.value < boxes.length){
+                    console.log(dropDown.value);
+                    boxes[dropDown.value].color = '#'+input;
+                    paint()
+                } else {
+                    if(!(dropDown.value < boxes.length)){
+                    alert("ingen farge generert på index: " + dropDown.value);
+                    }
+                }
+            
+            
         }
 
         
