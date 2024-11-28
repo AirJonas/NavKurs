@@ -12,8 +12,8 @@
         <canvas id="colorspace"></canvas>
         <nav>
             <button id="addColor" onclick="setRandomColor()">Legg till en farge</button>
-            <button id="emptyArray">Tilbakestill fargene</button>
-            <button id="generateAll">Generer 10 nye farger</button>
+            <button id="emptyArray" onclick="clearCanvas()">Tilbakestill fargene</button>
+            <button id="generateAll" onclick="generate10Colors()">Generer 10 nye farger</button>
         </nav>
         <h2>Endre farger:</h2>
         <section>
@@ -42,7 +42,8 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
-        let colors = []
+        let box ={};
+        let boxes =[]
         function getRandomColor(){
             let letters ="0123456789ABCDEF";
             let color = "#";
@@ -51,15 +52,28 @@
             }
             return color;
         }
-
-        position = 0;
-        test = "la"
+        let position = 0;
         function setRandomColor(){
             if(position < 1000){
-                ctx.fillStyle = getRandomColor();
+                randomColor = getRandomColor();
+                ctx.fillStyle = randomColor;
                 ctx.fillRect(position,0,100,100);
-                position = position + 100
+                box = {color: randomColor, position: position}
+                boxes.push(box);
+                position = position + 100;
             } else return;
+        }
+
+        function clearCanvas(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            position = 0;
+            boxes=[]
+        }
+
+        function generate10Colors(){
+            while(position<1000){
+                setRandomColor()
+            }
         }
 
         
