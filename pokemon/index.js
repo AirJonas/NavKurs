@@ -1,6 +1,7 @@
 let pokemonObj=null
 let url = "https://pokeapi.co/api/v2/pokemon"
 let spriteField = document.getElementById("sprites");
+let myPokemon = [];
 
 mainView()
 
@@ -48,5 +49,15 @@ async function getOnePokemon(){
     catch(error){
         console.error(error);
     }
+}
+
+function catchPokemon(){
+    if(pokemonObj == null || pokemonObj.name ==""){
+        console.log("no pokemon")
+    } else {
+        myPokemon.push(pokemonObj);
+        getOnePokemon()
+    }
+    
 }
     
