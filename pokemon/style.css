@@ -1,9 +1,12 @@
 #field{
-    width: 500px;
+    width: 700px;
     height: 500px;
     border: 2px solid black;
     margin-left: auto;
     margin-right: auto;
+    background-image: url("img/pokemonField.png");
+    background-repeat: no-repeat;
+    background-size: 700px 500px;
     
 }
 
@@ -15,8 +18,26 @@
     padding: 10px;
 }
 
-.pokemonContainer{
-    background-color: lightgray;
-    border: 1px solid black;
+#pokemonContainer{
     text-align: center;
+    padding-top: 30%;
+    padding-bottom: auto;
+    
+}
+
+.buttonContainer{
+    text-align: center;
+}
+
+#pokemonName{
+    font-size: 30px;
+}
+
+#pokemonID{
+    color: white;
+}
+
+#pokemonSprite{
+    width: 200px;
+    height: 200px;
 }

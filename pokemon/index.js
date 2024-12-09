@@ -7,12 +7,12 @@ mainView()
 function mainView(){
     app.innerHTML= /*HTML*/ `
         <div id="field">
-            <div class="pokemonContainer">
+            <div id="pokemonContainer">
             </div>
         </div>
         <div class="buttonContainer">
             <button onclick="catchPokemon()">Fang</button>    
-            <button onclick="updateView()">Finn en annen</button>
+            <button onclick="getOnePokemon()">Finn en pokemon</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
         </div>
     `;
@@ -20,7 +20,7 @@ function mainView(){
 
 async function getOnePokemon(){
     let randomNumber = Math.floor(Math.random() * 1024 + 1);
-    let pokemonContainer = document.querySelectorAll("pokemonContainer")
+    let pokemonContainer = document.getElementById("pokemonContainer")
     
 
     url = "https://pokeapi.co/api/v2/pokemon/" + randomNumber; 
@@ -35,10 +35,15 @@ async function getOnePokemon(){
         pokemonObj = {
             name: pokemon.name,
             sprite: pokemonSprite,
-            pokemonId: pokemon.id
+            pokemonId: "#"+pokemon.id
         }
+        pokemonContainer.innerHTML = /*HTML*/`
+            <div id="pokemonName">${pokemonObj.name}</div>
+            <div id="pokemonID">${pokemonObj.pokemonId}</div>
+            <img id="pokemonSprite" src="${pokemonSprite}">
+        `;
 
-        
+
     }
     catch(error){
         console.error(error);
