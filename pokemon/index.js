@@ -38,7 +38,7 @@ function pokemonView(index){
             <img id="myPokemonSpriteInfo" src="${myPokemon[index].sprite}">
             <div id="pokemonTypesBox">
                 <div id="pokemonType1">${myPokemon[index].type1}</div>
-                <div id="pokemonType2"></div>
+                <div id="pokemonType2">${myPokemon[index].type2}</div>
             </div>
         </div>
         <div class="buttonContainer">    
@@ -62,11 +62,17 @@ async function getOnePokemon(){
 
         const pokemon = await response.json();
         let pokemonSprite = pokemon.sprites.front_default;
+        let pokemonTypes = pokemon.types
+        let pokemonType2 = "";
+        if(pokemonTypes.length == 1){
+            pokemonType2 = "none";
+        }
         pokemonObj = {
             name: pokemon.name,
             sprite: pokemonSprite,
             pokemonId: "#"+pokemon.id,
-            type1: pokemon.types[0].type.name
+            type1: pokemon.types[0].type.name,
+            type2: pokemonType2
         }
         pokemonContainer.innerHTML = /*HTML*/`
             <div id="pokemonName">${pokemonObj.name}</div>
