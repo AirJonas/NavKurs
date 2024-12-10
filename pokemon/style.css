@@ -1,3 +1,7 @@
+body{
+    background-color: grey;
+}
+
 #field{
     width: 700px;
     height: 500px;
@@ -10,12 +14,25 @@
     
 }
 
-#sprites{
+#playerBox{
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: lightgray;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px;
+}
+
+.pokemonsInBox{
+    border: solid 2px;
+    text-align: center;
+    
+}
+
+.pokemonsInBox:hover{
+    background-color: grey;
+    cursor: pointer;
 }
 
 #pokemonContainer{
@@ -27,6 +44,7 @@
 
 .buttonContainer{
     text-align: center;
+    padding: 5px;
 }
 
 #pokemonName{
@@ -40,4 +58,22 @@
 #pokemonSprite{
     width: 200px;
     height: 200px;
+}
+
+#pokemonInfoBox{
+    text-align: center;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid;
+    width: 450px;
+}
+
+#myPokemonNameInfo{
+    font-size: 40px;
+}
+
+#myPokemonSpriteInfo{
+    width: 300px;
+    height: 300px;
 }
