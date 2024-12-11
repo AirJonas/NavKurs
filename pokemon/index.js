@@ -49,6 +49,7 @@ function pokemonView(index){
             <button onclick="mainView()">Finn en pokemon</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
         </div>
+        
     `;
 
     type1Box = document.getElementById("pokemonType1");
@@ -75,6 +76,12 @@ async function getOnePokemon(){
         let pokemonTypes = pokemon.types
         let pokemonType1 = capitalizeFirstLeter(pokemon.types[0].type.name)
         let pokemonType2 = "";
+        let pokeHp = pokemon.stats[0].base_stat;
+        let pokAtck = pokemon.stats[1].base_stat;
+        let pokDef = pokemon.stats[2].base_stat;
+        let pokSpAt = pokemon.stats[3].base_stat;
+        let pokSpDef = pokemon.stats[4].base_stat;
+        let pokSpeed = pokemon.stats[5].base_stat;
         if(pokemonTypes.length == 1){
             pokemonType2 = "none";
         } else {
@@ -85,7 +92,15 @@ async function getOnePokemon(){
             sprite: pokemonSprite,
             pokemonId: "#"+pokemon.id,
             type1: pokemonType1,
-            type2: pokemonType2
+            type2: pokemonType2,
+            hp: pokeHp,
+            attack: pokAtck,
+            defense: pokDef,
+            specialAttack: pokSpAt,
+            specialDefense: pokSpDef,
+            speed: pokSpeed,
+            totalStat: pokeHp + pokAtck + pokDef + pokSpAt + pokSpDef + pokSpeed
+
         }
         pokemonContainer.innerHTML = /*HTML*/`
             <div id="pokemonName">${pokemonObj.name}</div>
