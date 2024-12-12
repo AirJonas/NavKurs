@@ -4,6 +4,13 @@ let spriteField = document.getElementById("sprites");
 let myPokemon = [];
 let type1Box;
 let type2Box;
+let hpBar;
+let attackBar;
+let defenceBar;
+let spAtckBar;
+let spDefBar;
+let speed;
+
 
 
 
@@ -44,11 +51,53 @@ function pokemonView(index){
                 <span class="type" id="pokemonType1">${myPokemon[index].type1}</span>
                 <span class="type" id="pokemonType2">${myPokemon[index].type2}</span>
             </div>
+            <div id="statsContainer">
+                <table id="statsTable">
+                    <tbody>
+                        <tr>
+                            <th class="statName">HP</th>
+                            <td class="cell-num">${myPokemon[index].hp}</td>
+                            <td class="cell-bar"><div class="insideBars" id="hpBar"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="statName">Attack</th>
+                            <td class="cell-num">${myPokemon[index].attack}</td>
+                            <td class="cell-bar"><div class="insideBars" id="attackBar"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="statName">Defence</th>
+                            <td class="cell-num">${myPokemon[index].defense}</td>
+                            <td class="cell-bar"><div class="insideBars" id="defenceBar"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="statName">Sp.Atk</th>
+                            <td class="cell-num">${myPokemon[index].specialAttack}</td>
+                            <td class="cell-bar"><div class="insideBars" id="spAttackkBar"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="statName">Sp.Def</th>
+                            <td class="cell-num">${myPokemon[index].specialDefense}</td>
+                            <td class="cell-bar"><div class="insideBars" id="spDefenceBar"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="statName">Speed</th>
+                            <td class="cell-num">${myPokemon[index].speed}</td>
+                            <td class="cell-bar"><div class="insideBars" id="speedBar"></div></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th class="statName">Total</th>
+                        <td class="cell-num">${myPokemon[index].totalStat}</td>
+                        <td class="cell-barTotal"></td>
+                    </tfoot>
+                </table>
+            </div>
         </div>
         <div class="buttonContainer">    
             <button onclick="mainView()">Finn en pokemon</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
         </div>
+        
         
     `;
 
@@ -56,6 +105,7 @@ function pokemonView(index){
     type2Box = document.getElementById("pokemonType2");
     changeColorToType1Box(myPokemon[index].type1);
     changeColorToType2Box(myPokemon[index].type2);
+    setBarStats(index);
     
 }
 
@@ -138,6 +188,102 @@ function catchPokemon(){
 
 function capitalizeFirstLeter(string){
     return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function setBarStats(id){
+    hpBar = document.getElementById("hpBar"); 
+    attackBar = document.getElementById("attackBar");
+    defenceBar = document.getElementById("defenceBar");
+    spAtckBar = document.getElementById("spAttackkBar");
+    spDefBar = document.getElementById("spDefenceBar");
+    speed = document.getElementById("speedBar");
+
+    hpBar.style.width = percentage(myPokemon[id].hp) + "%";
+    attackBar.style.width = percentage(myPokemon[id].attack) + "%";
+    defenceBar.style.width = percentage(myPokemon[id].defense) + "%";
+    spAtckBar.style.width = percentage(myPokemon[id].specialAttack) + "%";
+    spDefBar.style.width = percentage(myPokemon[id].specialDefense) + "%";
+    speed.style.width = percentage(myPokemon[id].speed) + "%";
+
+    setColorBars(myPokemon[id].hp, "Hp");
+
+    
+    
+}
+
+function percentage(partialValue) {
+    return (100 * partialValue) / 255;
+}
+
+function setColorBars(statsValue, stat){
+    switch(stat){
+        case "hp":
+            if(statsValue <= 50){
+                hpBar.style.backgroundColor = "red";
+            } else if(statsValue <= 100) {
+                hpBar.style.backgroundColor = "orange";
+            } else if (statsValue <= 150){
+                hpBar.style.backgroundColor = "yellow";
+            } else {
+                hpBar.style.backgroundColor = "green";
+            }
+            break;
+        case "hp":
+            if(statsValue <= 50){
+                hpBar.style.backgroundColor = "red";
+            } else if(statsValue <= 100) {
+                hpBar.style.backgroundColor = "orange";
+            } else if (statsValue <= 150){
+                hpBar.style.backgroundColor = "yellow";
+            } else {
+                hpBar.style.backgroundColor = "green";
+            }
+            break;
+        case "hp":
+            if(statsValue <= 50){
+                hpBar.style.backgroundColor = "red";
+            } else if(statsValue <= 100) {
+                hpBar.style.backgroundColor = "orange";
+            } else if (statsValue <= 150){
+                hpBar.style.backgroundColor = "yellow";
+            } else {
+                hpBar.style.backgroundColor = "green";
+            }
+            break;
+        case "hp":
+            if(statsValue <= 50){
+                hpBar.style.backgroundColor = "red";
+            } else if(statsValue <= 100) {
+                hpBar.style.backgroundColor = "orange";
+            } else if (statsValue <= 150){
+                hpBar.style.backgroundColor = "yellow";
+            } else {
+                hpBar.style.backgroundColor = "green";
+            }
+            break;
+        case "hp":
+            if(statsValue <= 50){
+                hpBar.style.backgroundColor = "red";
+            } else if(statsValue <= 100) {
+                hpBar.style.backgroundColor = "orange";
+            } else if (statsValue <= 150){
+                hpBar.style.backgroundColor = "yellow";
+            } else {
+                hpBar.style.backgroundColor = "green";
+            }
+            break;
+    }
+
+
+    if(statsValue <= 50){
+        hpBar.style.backgroundColor = "red";
+    } else if(statsValue <= 100) {
+        hpBar.style.backgroundColor = "orange";
+    } else if (statsValue <= 150){
+        hpBar.style.backgroundColor = "yellow";
+    } else {
+        hpBar.style.backgroundColor = "green";
+    }
 }
 
 function changeColorToType1Box(type){

@@ -90,3 +90,24 @@ body{
     border-radius: 15px;
     padding: 2%;
 }
+
+#statsContainer{
+    border: solid 2px;
+    margin: 6%;
+    padding: 2%;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+.cell-bar{
+    width: 100%;
+    border: solid 1px;
+    border-radius: 10px;
+
+}
+
+.insideBars{
+    height: 18px;
+    border-radius: 10px;
+    background-color: green;
+}
