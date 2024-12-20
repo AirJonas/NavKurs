@@ -206,6 +206,11 @@ function setBarStats(id){
     speed.style.width = percentage(myPokemon[id].speed) + "%";
 
     setColorBars(myPokemon[id].hp, "Hp");
+    setColorBars(myPokemon[id].attack, "attack");
+    setColorBars(myPokemon[id].defense, "defence");
+    setColorBars(myPokemon[id].specialAttack, "spAtc");
+    setColorBars(myPokemon[id].specialDefense, "spDef");
+    setColorBars(myPokemon[id].speed, "speed");
 
     
     
@@ -217,72 +222,72 @@ function percentage(partialValue) {
 
 function setColorBars(statsValue, stat){
     switch(stat){
-        case "hp":
-            if(statsValue <= 50){
+        case "Hp":
+            if(statsValue < 50){
                 hpBar.style.backgroundColor = "red";
-            } else if(statsValue <= 100) {
+            } else if(statsValue < 100) {
                 hpBar.style.backgroundColor = "orange";
-            } else if (statsValue <= 150){
-                hpBar.style.backgroundColor = "yellow";
+            } else if (statsValue < 125){
+                hpBar.style.backgroundColor = "lightgreen";
             } else {
                 hpBar.style.backgroundColor = "green";
             }
             break;
-        case "hp":
-            if(statsValue <= 50){
-                hpBar.style.backgroundColor = "red";
-            } else if(statsValue <= 100) {
-                hpBar.style.backgroundColor = "orange";
-            } else if (statsValue <= 150){
-                hpBar.style.backgroundColor = "yellow";
+        case "attack":
+            if(statsValue < 50){
+                attackBar.style.backgroundColor = "red";
+            } else if(statsValue < 100) {
+                attackBar.style.backgroundColor = "orange";
+            } else if (statsValue < 125){
+                attackBar.style.backgroundColor = "lightgreen";
             } else {
-                hpBar.style.backgroundColor = "green";
+                attackBar.style.backgroundColor = "green";
+            }
+            break; 
+        case "defence":
+            if(statsValue < 50){
+                defenceBar.style.backgroundColor = "red";
+            } else if(statsValue < 100) {
+                defenceBar.style.backgroundColor = "orange";
+            } else if (statsValue < 125){
+                defenceBar.style.backgroundColor = "lightgreen";
+            } else {
+                defenceBar.style.backgroundColor = "green";
             }
             break;
-        case "hp":
-            if(statsValue <= 50){
-                hpBar.style.backgroundColor = "red";
-            } else if(statsValue <= 100) {
-                hpBar.style.backgroundColor = "orange";
-            } else if (statsValue <= 150){
-                hpBar.style.backgroundColor = "yellow";
+        case "spAtc":
+            if(statsValue < 50){
+                spAtckBar.style.backgroundColor = "red";
+            } else if(statsValue < 100) {
+                spAtckBar.style.backgroundColor = "orange";
+            } else if (statsValue < 125){
+                spAtckBar.style.backgroundColor = "lightgreen";
             } else {
-                hpBar.style.backgroundColor = "green";
+                spAtckBar.style.backgroundColor = "green";
             }
             break;
-        case "hp":
-            if(statsValue <= 50){
-                hpBar.style.backgroundColor = "red";
-            } else if(statsValue <= 100) {
-                hpBar.style.backgroundColor = "orange";
-            } else if (statsValue <= 150){
-                hpBar.style.backgroundColor = "yellow";
+        case "spDef":
+            if(statsValue < 50){
+                spDefBar.style.backgroundColor = "red";
+            } else if(statsValue < 100) {
+                spDefBar.style.backgroundColor = "orange";
+            } else if (statsValue < 125){
+                spDefBar.style.backgroundColor = "lightgreen";
             } else {
-                hpBar.style.backgroundColor = "green";
+                spDefBar.style.backgroundColor = "green";
             }
             break;
-        case "hp":
-            if(statsValue <= 50){
-                hpBar.style.backgroundColor = "red";
-            } else if(statsValue <= 100) {
-                hpBar.style.backgroundColor = "orange";
-            } else if (statsValue <= 150){
-                hpBar.style.backgroundColor = "yellow";
+        case "speed":
+            if(statsValue < 50){
+                speed.style.backgroundColor = "red";
+            } else if(statsValue < 100) {
+                speed.style.backgroundColor = "orange";
+            } else if (statsValue < 125){
+                speed.style.backgroundColor = "lightgreen";
             } else {
-                hpBar.style.backgroundColor = "green";
+                speed.style.backgroundColor = "green";
             }
             break;
-    }
-
-
-    if(statsValue <= 50){
-        hpBar.style.backgroundColor = "red";
-    } else if(statsValue <= 100) {
-        hpBar.style.backgroundColor = "orange";
-    } else if (statsValue <= 150){
-        hpBar.style.backgroundColor = "yellow";
-    } else {
-        hpBar.style.backgroundColor = "green";
     }
 }
 
