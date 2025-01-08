@@ -13,7 +13,6 @@ let speed;
 
 
 
-
 mainView()
 
 function mainView(){
@@ -42,6 +41,8 @@ function showPokemonView(){
 }
 
 function pokemonView(index){
+    //getPokedexentry(myPokemon[index].name.toLowerCase())
+    getPokedexentry(myPokemon[index].name.toLowerCase())
     app.innerHTML = /*HTML*/`
         <div id="pokemonInfoBox">
             <div id="myPokemonNameInfo">${myPokemon[index].name}</div>
@@ -92,7 +93,9 @@ function pokemonView(index){
                     </tfoot>
                 </table>
             </div>
+            <div id="pokedexContainer"></div>
         </div>
+
         <div class="buttonContainer">    
             <button onclick="mainView()">Finn en pokemon</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
@@ -157,6 +160,28 @@ async function getOnePokemon(){
             <div id="pokemonID">${pokemonObj.pokemonId}</div>
             <img id="pokemonSprite" src="${pokemonSprite}">
         `;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+async function getPokedexentry(pokeName) {
+    console.log(pokeName)
+    url = "https://pokeapi.co/api/v2/pokemon-species/" + pokeName;
+    try{
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const data = await response.json();
+        let pokedexEntry = data.flavor_text_entries[1].flavor_text;
+
+        document.getElementById("pokemonInfoBox").innerHTML += `
+        <div>${pokedexEntry}</div>
+        `; 
+    
+
     }
     catch(error){
         console.error(error);
