@@ -167,19 +167,28 @@ async function getOnePokemon(){
 }
 
 async function getPokedexentry(pokeName) {
-    console.log(pokeName)
     url = "https://pokeapi.co/api/v2/pokemon-species/" + pokeName;
+    let english = false;
+    let i = 0;
     try{
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
         const data = await response.json();
-        let pokedexEntry = data.flavor_text_entries[1].flavor_text;
-
-        document.getElementById("pokemonInfoBox").innerHTML += `
-        <div>${pokedexEntry}</div>
-        `; 
+        while (english == false) {
+            if (data.flavor_text_entries[i].language.name == "en"){
+                let pokedexEntry = data.flavor_text_entries[i].flavor_text;
+                document.getElementById("pokemonInfoBox").innerHTML += /*html*/`
+                    <div id="pokedexBox">${pokedexEntry}</div>
+                `; 
+                english = true;
+            }
+            else{
+                i++
+            }
+        }
+        
     
 
     }
