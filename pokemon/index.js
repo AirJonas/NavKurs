@@ -93,6 +93,7 @@ function pokemonView(index){
                     </tfoot>
                 </table>
             </div>
+            <h2>Pokedex entry</h2>
             <div id="pokedexContainer"></div>
         </div>
 
@@ -106,8 +107,8 @@ function pokemonView(index){
 
     type1Box = document.getElementById("pokemonType1");
     type2Box = document.getElementById("pokemonType2");
-    changeColorToType1Box(myPokemon[index].type1);
-    changeColorToType2Box(myPokemon[index].type2);
+    changeColorToType(myPokemon[index].type1, type1Box);
+    changeColorToType(myPokemon[index].type2, type2Box);
     setBarStats(index);
     
 }
@@ -183,6 +184,7 @@ async function getPokedexentry(pokeName) {
                     <div id="pokedexBox">${pokedexEntry}</div>
                 `; 
                 english = true;
+                i = 0;
             }
             else{
                 i++
@@ -325,125 +327,65 @@ function setColorBars(statsValue, stat){
     }
 }
 
-function changeColorToType1Box(type){
+function changeColorToType(type, place){
     switch(type){
         case "Normal":
-            type1Box.style.backgroundColor = "#A8A77A";
+            place.style.backgroundColor = "#A8A77A";
             break;
         case "Fire":
-            type1Box.style.backgroundColor = "#EE8130";
+            place.style.backgroundColor = "#EE8130";
             break;
         case "Water":
-            type1Box.style.backgroundColor = "#6390F0";
+            place.style.backgroundColor = "#6390F0";
             break;
         case "Electric":
-            type1Box.style.backgroundColor = "#F7D02C";
+            place.style.backgroundColor = "#F7D02C";
             break;
         case "Grass":
-            type1Box.style.backgroundColor = "#7AC74C";
+            place.style.backgroundColor = "#7AC74C";
             break;
         case "Ice":
-            type1Box.style.backgroundColor = "#96D9D6";
+            place.style.backgroundColor = "#96D9D6";
             break;
         case "Fighting":
-            type1Box.style.backgroundColor = "#C22E28";
+            place.style.backgroundColor = "#C22E28";
             break;
         case "Poison":
-            type1Box.style.backgroundColor = "#A33EA1";
+            place.style.backgroundColor = "#A33EA1";
             break;
         case "Ground":
-            type1Box.style.backgroundColor = "#E2BF65";
+            place.style.backgroundColor = "#E2BF65";
             break;
         case "Flying":
-            type1Box.style.backgroundColor = "#A98FF3";
+            place.style.backgroundColor = "#A98FF3";
             break;
         case "Psychic":
-            type1Box.style.backgroundColor = "#F95587";
+            place.style.backgroundColor = "#F95587";
             break;
         case "Bug":
-            type1Box.style.backgroundColor = "#A6B91A";
+            place.style.backgroundColor = "#A6B91A";
             break;
         case "Rock":
-            type1Box.style.backgroundColor = "#B6A136";
+            place.style.backgroundColor = "#B6A136";
             break;
         case "Ghost":
-            type1Box.style.backgroundColor = "#735797";
+            place.style.backgroundColor = "#735797";
             break;
         case "Dragon":
-            type1Box.style.backgroundColor = "#6F35FC";
+            place.style.backgroundColor = "#6F35FC";
             break;
         case "Dark":
-            type1Box.style.backgroundColor = "#705746";
+            place.style.backgroundColor = "#705746";
             break;
         case "Steel":
-            type1Box.style.backgroundColor = "#B7B7CE";
+            place.style.backgroundColor = "#B7B7CE";
             break;
         case "Fairy":
-            type1Box.style.backgroundColor = "#D685AD";
-            break;
-    }
-}
-
-function changeColorToType2Box(type){
-    switch(type){
-        case "Normal":
-            type2Box.style.backgroundColor = "#A8A77A";
-            break;
-        case "Fire":
-            type2Box.style.backgroundColor = "#EE8130";
-            break;
-        case "Water":
-            type2Box.style.backgroundColor = "#6390F0";
-            break;
-        case "Electric":
-            type2Box.style.backgroundColor = "#F7D02C";
-            break;
-        case "Grass":
-            type2Box.style.backgroundColor = "#7AC74C";
-            break;
-        case "Ice":
-            type2Box.style.backgroundColor = "#96D9D6";
-            break;
-        case "Fighting":
-            type2Box.style.backgroundColor = "#C22E28";
-            break;
-        case "Poison":
-            type2Box.style.backgroundColor = "#A33EA1";
-            break;
-        case "Ground":
-            type2Box.style.backgroundColor = "#E2BF65";
-            break;
-        case "Flying":
-            type2Box.style.backgroundColor = "#A98FF3";
-            break;
-        case "Psychic":
-            type2Box.style.backgroundColor = "#F95587";
-            break;
-        case "Bug":
-            type2Box.style.backgroundColor = "#A6B91A";
-            break;
-        case "Rock":
-            type2Box.style.backgroundColor = "#B6A136";
-            break;
-        case "Ghost":
-            type2Box.style.backgroundColor = "#735797";
-            break;
-        case "Dragon":
-            type2Box.style.backgroundColor = "#6F35FC";
-            break;
-        case "Dark":
-            type2Box.style.backgroundColor = "#705746";
-            break;
-        case "Steel":
-            type2Box.style.backgroundColor = "#B7B7CE";
-            break;
-        case "Fairy":
-            type2Box.style.backgroundColor = "#D685AD";
+            place.style.backgroundColor = "#D685AD";
             break;
         case "none":
             type2Box.style.display = "none";
             break;
     }
 }
-
     

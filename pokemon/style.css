@@ -110,3 +110,10 @@ body{
     border-radius: 10px;
     background-color: green;
 }
+
+#pokedexBox{
+    border: solid 2px;
+    margin: 6%;
+    padding: 2%;
+    border-radius: 10px;
+}
