@@ -11,6 +11,9 @@ let spAtckBar;
 let spDefBar;
 let speed;
 let pokemonMove = [];
+let abilityDescription;
+let abilityText;
+
 
 
 
@@ -95,7 +98,7 @@ function pokemonView(index){
             <h3>Pokedex entry</h3>
             <div id="pokedexContainer"></div>
             <h3>Abilities</h3>
-            <div class="abilitysButtons"></div>
+            <div id="abilitysButtons"></div>
             <div id="abilityText"></div>
         </div>
 
@@ -110,9 +113,12 @@ function pokemonView(index){
     changeColorToType(myPokemon[index].type1, type1Box);
     changeColorToType(myPokemon[index].type2, type2Box);
     setBarStats(index);
-    getPokedexentry(myPokemon[index].species.url)
-    console.log(myPokemon[index].species.url)
-    console.log(myPokemon[index].abilities[0].ability.url)
+    abilityButtons = document.getElementById("abilitysButtons");
+    abilityText = document.getElementById("abilityText");
+    getPokedexentry(myPokemon[index].species.url);
+    for (let i = 0; i < myPokemon[index].abilities.length; i++) {
+        showAbilityInfo(index, i)
+    }
 
 }
 
@@ -210,11 +216,34 @@ async function getPokemonAbilitys(url) {
             throw new Error(`Response status: ${response.status}`);
         }
         const data = await response.json();
+        let abilityEffect = data.effect_entries.find(
+        (entry) => entry.language.name === "en").effect;
+        return abilityEffect;
 
     } catch(error){
         console.error(error);
+        return "Kunne ikke hente evnen.";
     }
 
+}
+
+async function showAbilityInfo(index, abilityIndex) {
+    const abilityUrl = myPokemon[index].abilities[abilityIndex].ability.url; // 
+    const abilityDescription = await getPokemonAbilitys(abilityUrl);
+    let safeDescription = JSON.stringify(abilityDescription);
+
+    let normalDescription = JSON.parse(safeDescription);
+    let abilityTextInsideAButton = abilityDescription.replace(/'/g, "\\'");
+    abilityButtons.innerHTML += /*HTML*/`
+        <button onclick='showAbilityText("${normalDescription}")'>Ability ${abilityIndex + 1}</button>
+    `;
+
+    
+    console.log("Egenskap:", abilityDescription);
+}
+
+function showAbilityText(text){
+    abilityText.innerHTML = text;
 }
 
 function showAllMyPokemon(){
