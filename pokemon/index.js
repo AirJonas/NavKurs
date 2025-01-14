@@ -1,6 +1,6 @@
 let pokemonObj=null
-let url = "https://pokeapi.co/api/v2/pokemon"
 let spriteField = document.getElementById("sprites");
+let abilityButtons;
 let myPokemon = [];
 let type1Box;
 let type2Box;
@@ -10,6 +10,7 @@ let defenceBar;
 let spAtckBar;
 let spDefBar;
 let speed;
+let pokemonMove = [];
 
 
 
@@ -41,8 +42,6 @@ function showPokemonView(){
 }
 
 function pokemonView(index){
-    //getPokedexentry(myPokemon[index].name.toLowerCase())
-    getPokedexentry(myPokemon[index].name.toLowerCase())
     app.innerHTML = /*HTML*/`
         <div id="pokemonInfoBox">
             <div id="myPokemonNameInfo">${myPokemon[index].name}</div>
@@ -93,31 +92,35 @@ function pokemonView(index){
                     </tfoot>
                 </table>
             </div>
-            <h2>Pokedex entry</h2>
+            <h3>Pokedex entry</h3>
             <div id="pokedexContainer"></div>
+            <h3>Abilities</h3>
+            <div class="abilitysButtons"></div>
+            <div id="abilityText"></div>
         </div>
 
-        <div class="buttonContainer">    
+        <div id="buttonContainer">    
             <button onclick="mainView()">Finn en pokemon</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
         </div>
-        
-        
-    `;
+        `;
 
     type1Box = document.getElementById("pokemonType1");
     type2Box = document.getElementById("pokemonType2");
     changeColorToType(myPokemon[index].type1, type1Box);
     changeColorToType(myPokemon[index].type2, type2Box);
     setBarStats(index);
-    
+    getPokedexentry(myPokemon[index].species.url)
+    console.log(myPokemon[index].species.url)
+    console.log(myPokemon[index].abilities[0].ability.url)
+
 }
 
 async function getOnePokemon(){
     let randomNumber = Math.floor(Math.random() * 1024 + 1);
     let pokemonContainer = document.getElementById("pokemonContainer")
     
-    url = "https://pokeapi.co/api/v2/pokemon/" + randomNumber; 
+    let url = "https://pokeapi.co/api/v2/pokemon/" + randomNumber; 
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -153,7 +156,9 @@ async function getOnePokemon(){
             specialAttack: pokSpAt,
             specialDefense: pokSpDef,
             speed: pokSpeed,
-            totalStat: pokeHp + pokAtck + pokDef + pokSpAt + pokSpDef + pokSpeed
+            totalStat: pokeHp + pokAtck + pokDef + pokSpAt + pokSpDef + pokSpeed,
+            abilities: pokemon.abilities,
+            species: pokemon.species
 
         }
         pokemonContainer.innerHTML = /*HTML*/`
@@ -167,8 +172,7 @@ async function getOnePokemon(){
     }
 }
 
-async function getPokedexentry(pokeName) {
-    url = "https://pokeapi.co/api/v2/pokemon-species/" + pokeName;
+async function getPokedexentry(url) {
     let english = false;
     let i = 0;
     try{
@@ -180,7 +184,7 @@ async function getPokedexentry(pokeName) {
         while (english == false) {
             if (data.flavor_text_entries[i].language.name == "en"){
                 let pokedexEntry = data.flavor_text_entries[i].flavor_text;
-                document.getElementById("pokemonInfoBox").innerHTML += /*html*/`
+                document.getElementById("pokedexContainer").innerHTML += /*html*/`
                     <div id="pokedexBox">${pokedexEntry}</div>
                 `; 
                 english = true;
@@ -193,10 +197,24 @@ async function getPokedexentry(pokeName) {
         
     
 
-    }
-    catch(error){
+    } catch(error){
         console.error(error);
     }
+}
+
+async function getPokemonAbilitys(url) {
+    console.log(url);
+    try{
+        const response = await fetch(url);
+        if(!response.ok){
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const data = await response.json();
+
+    } catch(error){
+        console.error(error);
+    }
+
 }
 
 function showAllMyPokemon(){
