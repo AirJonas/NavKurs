@@ -103,22 +103,24 @@
             {text: "Lag funksjonalitet for å registrere nye oppgaver", status: "To do"},
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
+
         todoView()
+
         function todoView(){
             document.getElementById('todolist').innerHTML = ""
             for (let i = 0; i < todos.length; i++){
-            let className
-            if(todos[i].status == "Done"){
-                className = "task-status-done"
-            } else {
-                className = "task-status-todo"
-            }
-            document.getElementById('todolist').innerHTML += /*html*/`
-                <li>
-                    <span class="tast-text">${todos[i].text}</span>
-                    <span class="task-status ${className}" onclick="changeClass(${i})">${todos[i].status}</span>
-                </li>
-            `;
+                let className
+                if(todos[i].status == "Done"){
+                    className = "task-status-done"
+                } else {
+                    className = "task-status-todo"
+                }
+                document.getElementById('todolist').innerHTML += /*html*/`
+                    <li>
+                        <span class="tast-text">${todos[i].text}</span>
+                        <span class="task-status ${className}" onclick="changeClass(${i})">${todos[i].status}</span>
+                    </li>
+                `;
         }
         }
 
@@ -138,11 +140,9 @@
         
 
         function changeClass(i){
-            if(todos[i].status == "Done"){
-                todos[i].status = "To Do"
-            } else {
+            if(todos[i].status == "To do"){
                 todos[i].status = "Done"
-            }
+            } 
             todoView()
         }
         

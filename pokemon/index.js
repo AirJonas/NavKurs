@@ -231,7 +231,7 @@ async function getPokemonAbilitys(url) {
 async function showAbilityInfo(index, abilityIndex) {
     const abilityUrl = myPokemon[index].abilities[abilityIndex].ability.url; // 
     const abilityDescription = await getPokemonAbilitys(abilityUrl);
-    let abilityTextInsideAButton = abilityDescription.replace(/'/g,"´").replace(/\n/g, "<br>")
+    let abilityTextInsideAButton = abilityDescription.replace(/'/g,"´").replace(/\n/g, "<br>").replace(/"/g, "´")
     abilityButtons.innerHTML += /*HTML*/`
     <button id="abilityBtn${abilityIndex}" onclick="showAbilityText('${abilityTextInsideAButton}')">${capitalizeFirstLeter(myPokemon[index].abilities[abilityIndex].ability.name)}</button>
     `;

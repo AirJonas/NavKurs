@@ -46,9 +46,11 @@
         let box ={};
         let boxes =[];
         let addColorButton = document.getElementById("addColor");
+        let position = 0;
 
         function paint(){
             for(let i = 0; i < boxes.length; i++){
+
                 ctx.fillStyle = boxes[i].color;
                 ctx.fillRect(boxes[i].position,0,100,100);
 
@@ -77,7 +79,7 @@
             }
             return color;
         }
-        let position = 0;
+        
         function setRandomColor(){
             if(position < 1000){
                 randomColor = getRandomColor();
@@ -88,6 +90,7 @@
                 if(position == 1000){
                     addColorButton.disabled = true;
                 }
+                console.table(boxes);
             } else return;
         }
 
@@ -130,6 +133,12 @@
 
         //Initial running of drawing canvas
         renderCanvas()
+        //let arrayListColor = hexPosition.color
+        //let arrayListXposition = hexPosition.x
+        //let arrayListOBJ = { x: arrayListXposition, color: arrayListColor}
+        //color.push(arrayListOBJ)
     </script>
 </body>
 </html>
+
+//let arrayListColor = hexPosition.color
