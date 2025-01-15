@@ -115,13 +115,12 @@ function pokemonView(index){
     setBarStats(index);
     abilityButtons = document.getElementById("abilitysButtons");
     abilityText = document.getElementById("abilityText");
+    abilityText.style.display = "none";
     getPokedexentry(myPokemon[index].species.url);
     for (let i = 0; i < myPokemon[index].abilities.length; i++) {
         showAbilityInfo(index, i)
     }
     
-
-
 }
 
 async function getOnePokemon(){
@@ -240,6 +239,7 @@ async function showAbilityInfo(index, abilityIndex) {
 }
 
 function showAbilityText(text){
+    abilityText.style.display = "";
     abilityText.innerHTML = text;
 }
 
