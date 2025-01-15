@@ -119,6 +119,8 @@ function pokemonView(index){
     for (let i = 0; i < myPokemon[index].abilities.length; i++) {
         showAbilityInfo(index, i)
     }
+    
+
 
 }
 
@@ -230,15 +232,10 @@ async function getPokemonAbilitys(url) {
 async function showAbilityInfo(index, abilityIndex) {
     const abilityUrl = myPokemon[index].abilities[abilityIndex].ability.url; // 
     const abilityDescription = await getPokemonAbilitys(abilityUrl);
-    let safeDescription = JSON.stringify(abilityDescription);
-
-    let normalDescription = JSON.parse(safeDescription);
-    let abilityTextInsideAButton = abilityDescription.replace(/'/g, "\\'");
+    let abilityTextInsideAButton = abilityDescription.replace(/'/g,"´").replace(/\n/g, "<br>")
     abilityButtons.innerHTML += /*HTML*/`
-        <button onclick='showAbilityText("${normalDescription}")'>Ability ${abilityIndex + 1}</button>
+    <button id="abilityBtn${abilityIndex}" onclick="showAbilityText('${abilityTextInsideAButton}')">${capitalizeFirstLeter(myPokemon[index].abilities[abilityIndex].ability.name)}</button>
     `;
-
-    
     console.log("Egenskap:", abilityDescription);
 }
 
